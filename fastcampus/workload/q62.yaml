@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: web-config
+  namespace: ckad
+data:
+  connection_string: localhost:80
+  external_url: cncf.io
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-pod
+  namespace: ckad
+spec:
+  containers:
+    - name: nginx
+      image: nginx:1.19.8-alpine
+      envFrom:
+        - configMapRef:
+            name: web-config

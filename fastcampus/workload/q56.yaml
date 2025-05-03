@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: prometheus-monitoring
+spec:
+  selector:
+    matchLabels:
+      name: prometheus-monitoring
+  template:
+    metadata:
+      labels:
+        name: prometheus-monitoring
+    spec:
+      tolerations:
+        - key: node-role.kubernetes.io/control-plane
+          operator: Exists
+          effect: NoSchedule
+      containers:
+        - name: prometheus-monitoring-container
+          image: prom/prometheus
