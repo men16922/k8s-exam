@@ -1,0 +1,15 @@
+# JetBrains
+.idea/
+*.iml
+
+# Kubernetes
+*.log
+*.out
+*.bak
+*.tmp
+
+# YAML 출력 캐시
+*.swp
+
+# Ignore secrets
+secrets.yaml
